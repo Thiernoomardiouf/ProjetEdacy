@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset = "UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<body>
+
+    <center>
+
+<div class="wrapper">
+  <div class="card">
+   <h1>Les différentes informations des éléves</h1>
+ 
+   {% for resultat_requete_information_eleve in resultat_requete_information_eleve %}
+     <p><strong>Numero de l'eleve:</strong>
+     <strong>{{ resultat_requete_information_eleve [0] }} </strong>
+     <strong>Nom de l'eleve:</strong>
+     <strong>{{ resultat_requete_information_eleve [1] }}</strong>
+     <strong>Prenom de l'eleve:</strong>
+     <strong>{{ resultat_requete_information_eleve [2] }}</strong>
+     <strong>La classe de l'eleve:</strong>
+     <strong>{{ resultat_requete_information_eleve [3] }}</strong></p>
+
+   {% endfor %}
+                    
+</div>
+</div>
+</body>
