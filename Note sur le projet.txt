@@ -1,0 +1,14 @@
+NOUS VOUS PRESENTONS ICI NOTRE PROJET FINAL QUI PORTE SUR LA REALISATION D'UNE APPLICATION POUR LA GESTION DU LYCEE 
+D'EXELENCE DE DAKAR. 
+
+Ce projet a été réalisé avec le micro-framework de python nommé Flask.
+
+
+On a créé une base de données Mysql nommée BDprojet qui comporte deux tables. Une table Classe pour stocker les 
+informations des classes et une table Elève pour les élèves. J’ai utilisé mysql.connector pour accéder à la base de 
+données et faire mes requetés. 
+L’application contient six fonctionnalités : 
+     •	Deux boutons pour ajouter une classe ou un élève
+     •	Deux boutons pour lister les informations de la base de données 
+     •	Et deux buttons pour modifier ou supprimer un classe
+
