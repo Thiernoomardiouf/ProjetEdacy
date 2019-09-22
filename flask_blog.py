@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request,   redirect, url_for
+from flask import Flask, render_template, request,   redirect, url_for, session
 from werkzeug.utils import secure_filename
 
 import mysql.connector as MS 
@@ -98,12 +98,17 @@ def modifier_classe():
         resultat_requete_information_classe = cursor.fetchall()
         print(resultat_requete_information_classe)
 
+        
     if request.method == 'POST':  
-        Numeroclasse = request.form['numero']
-        Nomclasse = request.form['nom']
-        Nombre = request.form['nombre']
 
-        requete_modifier_classe = 'UDATE Classe SET Numeroclasse=Numroclasse, Nomclasse=Nomclasse, Nombre=Nombre'
+        Nom = request.form['nom']
+
+        requette_avoir_id_classe = "SELECT IdClasse FROM Classe WHERE Nomclasse = '%s'"
+        cursor.execute(requette_avoir_id_classe % Nom)
+
+        id_classe = cursor.fetchone()
+
+        requete_modifier_classe = 'UDATE Classe SET Numeroclasse=Numroclasse, Nomclasse=Nomclasse, Nombre=Nombre WHERE IdClasse=id_classe'
         cursor.execute(requete_modifier_classe)
         resultat_requete_modifier_classe = cursor.fetchall()
         print(resultat_requete_modifier_classe)
@@ -120,12 +125,14 @@ def supprimer_classe():
         print(resultat_requete_information_classe)
 
     if request.method == 'POST':  
-        Numeroeleve = request.form['numero']
         Nom = request.form['nom']
-        Prenom = request.form['prenom']
-        Classe = request.form['classe']
+
+        requette_avoir_id_eleve = "SELECT IdClasse FROM Eleve WHERE Nom = '%s' "
+        cursor.execute(requette_avoir_id_eleve % Nom)
+
+        id_eleve = cursor.fetchone()
         
-        requete_supprimer_classe = 'DELETE FROM Classe'
+        requete_supprimer_classe = 'DELETE FROM Classe WHERE IdEleve=id_eleve'
         cursor.execute(requete_supprimer_classe)
         resultat_requete_supprimer_classe = cursor.fetchall() 
         print(resultat_requete_supprimer_classe)
